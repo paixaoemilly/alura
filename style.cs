@@ -12,9 +12,9 @@
 body {
     font-family: Arial, sans-serif;
 
-    background-color: white;
+    background-color;
 
-    color: #222;
+    color: #305136;
 
     min-height: 100vh;
 }
@@ -36,7 +36,7 @@ body {
 
     padding: 25px 50px;
 
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #f7eded;
 }
 
 
