@@ -1,529 +1,391 @@
-/* =================================
-   CONFIGURAÇÕES GERAIS
-================================= */
+
+:root {
+  --blue-green: #82b5b6;
+  --green: #83bd45;
+  --white: #ffffff;
+  --black: #000000;
+}
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-    font-family: Arial, sans-serif;
-
-    background-color;
-
-    color: #305136;
-
-    min-height: 100vh;
+  background: var(--green);
+  color: var(--white);
+  font-family: "Libre Baskerville", Georgia, serif;
 }
 
-
-/* =================================
+/* =========================
    CABEÇALHO
-================================= */
+========================= */
 
-.cabecalho {
-
-    min-height: 120px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: 25px 50px;
-
-    border-bottom: 1px solid #f7eded;
+.hero {
+  height: 178px;
+  min-height: 150px;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.03)),
+    url("imagens/fundo.jpg");
+  background-size: cover;
+  background-position: center 43%;
+  border-bottom: 3px solid var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-
-.logo {
-
-    font-size: 42px;
-
-    font-weight: normal;
-
-    text-transform: uppercase;
+.hero-overlay {
+  width: 100%;
+  padding-top: 5px;
 }
 
-
-.menu {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
+.japanese-title {
+  font-family: "Libre Baskerville", serif;
+  font-size: clamp(20px, 2.2vw, 38px);
+  letter-spacing: 5px;
+  margin-bottom: -5px;
 }
 
-
-.menu button {
-
-    background: transparent;
-
-    border: none;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    text-transform: uppercase;
+.hero h1 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(46px, 5.3vw, 86px);
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: 1;
 }
 
-
-.menu button:hover {
-
-    text-decoration: underline;
-}
-
-
-
-/* =================================
+/* =========================
    FILMES
-================================= */
+========================= */
 
-.filmes {
-
-    padding: 35px 40px 45px;
-
-    border-bottom: 1px solid #222;
+.films-section {
+  height: 288px;
+  background: var(--blue-green);
+  border-bottom: 3px solid var(--white);
+  padding: 25px 20px 30px;
 }
 
-
-.filmes > h2 {
-
-    text-align: center;
-
-    font-size: 24px;
-
-    margin-bottom: 35px;
+h2 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(34px, 3vw, 50px);
+  font-weight: 400;
 }
 
-
-.carrossel {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 30px;
+.films-section h2 {
+  text-align: center;
+  margin-bottom: 27px;
 }
 
-
-
-/* =================================
-   SETAS
-================================= */
-
-.seta {
-
-    width: 55px;
-
-    height: 55px;
-
-    border-radius: 50%;
-
-    border: 1px solid #222;
-
-    background: white;
-
-    font-size: 25px;
-
-    cursor: pointer;
-
-    flex-shrink: 0;
+.films-carousel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-
-.seta:hover {
-
-    background-color: #eee;
+.films-window {
+  flex: 1;
+  overflow: hidden;
 }
 
-
-
-/* =================================
-   FILMES
-================================= */
-
-.filme {
-
-    text-align: center;
+.films-track {
+  display: flex;
+  gap: 28px;
+  transition: transform 0.45s ease;
 }
 
-
-.filme-lateral {
-
-    width: 180px;
-
-    opacity: 0.75;
+.film-card {
+  flex: 0 0 calc((100% - 112px) / 5);
+  height: 147px;
+  overflow: hidden;
 }
 
-
-.filme-principal {
-
-    width: 350px;
+.film-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.25s ease;
 }
 
-
-.capa {
-
-    width: 100%;
-
-    height: 240px;
-
-    border: 1px solid #222;
-
-    overflow: hidden;
-
-    background-color: #f5f5f5;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
+.film-card:hover img {
+  transform: scale(1.035);
 }
 
-
-.filme-principal .capa {
-
-    height: 300px;
+.carousel-btn {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--blue-green);
+  font-size: 30px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 42px;
+  transition: transform 0.2s ease;
 }
 
-
-.capa img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-    display: block;
+.carousel-btn:hover {
+  transform: scale(1.08);
 }
 
-
-.filme h3 {
-
-    margin-top: 12px;
-
-    font-size: 18px;
-}
-
-
-.filme-principal p {
-
-    margin-top: 10px;
-
-    line-height: 1.5;
-
-    font-size: 14px;
-}
-
-
-
-/* =================================
+/* =========================
    PARTE INFERIOR
-================================= */
+========================= */
 
-.parte-inferior {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1.5fr;
-
-    min-height: 500px;
+.bottom-section {
+  min-height: 410px;
+  display: grid;
+  grid-template-columns: 48% 52%;
 }
 
-
-
-/* =================================
-   TRILHA SONORA
-================================= */
-
-.trilha {
-
-    padding: 35px;
-
-    border-right: 1px solid #222;
+.music-section {
+  min-height: 410px;
+  border-right: 3px solid var(--white);
+  display: grid;
+  grid-template-columns: 43% 57%;
+  padding: 15px 25px 25px 30px;
 }
 
-
-.trilha h2 {
-
-    margin-bottom: 25px;
+.music-list h2 {
+  margin-bottom: 35px;
 }
 
+.music-item,
+.more-music {
+  display: block;
+  color: var(--white);
+  font: inherit;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(25px, 2vw, 34px);
+  line-height: 1.35;
+}
 
+.music-item {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: 2px;
+}
 
-/* =================================
-   PLAYER
-================================= */
+.music-item:hover,
+.music-item.active {
+  text-decoration: underline;
+}
+
+.more-music {
+  margin-top: 3px;
+  margin-left: 48px;
+}
 
 .player {
-
-    padding: 20px;
-
-    border: 1px solid #222;
-
-    border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px;
 }
 
-
-.album {
-
-    width: 100%;
-
-    height: 170px;
-
-    border: 1px solid #222;
-
-    overflow: hidden;
-
-    margin-bottom: 20px;
-
-    background-color: #f5f5f5;
+.album-art {
+  width: min(340px, 95%);
+  aspect-ratio: 1 / 0.8;
+  margin-top: 0;
+  overflow: hidden;
 }
 
-
-.album img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
+.album-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-
-.musica-info {
-
-    margin-bottom: 20px;
+.song-name {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(24px, 2vw, 32px);
+  margin: 7px 0 8px;
 }
 
-
-.musica-info h3 {
-
-    margin-bottom: 5px;
+.progress-area {
+  width: min(310px, 90%);
 }
 
-
-.musica-info p {
-
-    font-size: 14px;
+#progress {
+  width: 100%;
+  height: 5px;
+  accent-color: var(--black);
+  cursor: pointer;
 }
 
-
-
-/* =================================
-   CONTROLES DO PLAYER
-================================= */
-
-.controles {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
+.player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(15px, 2vw, 28px);
+  margin-top: 12px;
 }
 
-
-.controles button {
-
-    border: none;
-
-    background: transparent;
-
-    font-size: 22px;
-
-    cursor: pointer;
+.control {
+  border: 0;
+  background: transparent;
+  color: var(--black);
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 35px;
+  line-height: 1;
 }
 
-
-.barra {
-
-    flex: 1;
-
-    height: 5px;
-
-    background-color: #ddd;
-
-    border-radius: 5px;
-
-    overflow: hidden;
+.control.small {
+  font-size: 31px;
 }
 
-
-.progresso {
-
-    width: 0%;
-
-    height: 100%;
-
-    background-color: #222;
+.control.play {
+  width: 70px;
+  height: 70px;
+  border: 3px solid var(--black);
+  border-radius: 50%;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
-#tempo {
-
-    font-size: 12px;
-
-    min-width: 35px;
+.control:hover {
+  transform: scale(1.08);
 }
 
-
-
-/* =================================
-   LISTA DE MÚSICAS
-================================= */
-
-.lista-musicas {
-
-    margin-top: 20px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 4px;
-}
-
-
-.lista-musicas button {
-
-    padding: 9px 10px;
-
-    border: none;
-
-    background: transparent;
-
-    text-align: left;
-
-    cursor: pointer;
-
-    font-size: 14px;
-}
-
-
-.lista-musicas button:hover {
-
-    background-color: #eee;
-}
-
-
-
-/* =================================
+/* =========================
    SOBRE
-================================= */
+========================= */
 
-.sobre {
-
-    padding: 35px;
+.about-section {
+  padding: 15px 40px 30px;
+  text-align: center;
 }
 
-
-.sobre h2 {
-
-    margin-bottom: 25px;
+.about-section h2 {
+  text-align: left;
+  margin-bottom: 25px;
 }
 
-
-.sobre p {
-
-    max-width: 600px;
-
-    line-height: 1.7;
-
-    margin-bottom: 20px;
+.about-section p {
+  max-width: 810px;
+  margin: 0 auto;
+  font-size: clamp(17px, 1.35vw, 23px);
+  line-height: 1.55;
+  font-weight: 700;
 }
 
+/* =========================
+   RESPONSIVO
+========================= */
 
+@media (max-width: 1050px) {
+  .film-card {
+    flex-basis: calc((100% - 56px) / 3);
+  }
 
-/* =================================
-   RODAPÉ
-================================= */
+  .films-section {
+    height: auto;
+    padding-bottom: 35px;
+  }
 
-footer {
+  .bottom-section {
+    grid-template-columns: 1fr;
+  }
 
-    padding: 25px;
+  .music-section {
+    border-right: 0;
+    border-bottom: 3px solid var(--white);
+  }
 
-    text-align: center;
-
-    border-top: 1px solid #222;
+  .about-section {
+    padding-bottom: 45px;
+  }
 }
-
-
-
-/* =================================
-   RESPONSIVIDADE
-================================= */
-
-@media (max-width: 900px) {
-
-    .filme-lateral {
-
-        display: none;
-    }
-
-}
-
 
 @media (max-width: 700px) {
+  .hero {
+    height: 150px;
+  }
 
-    .cabecalho {
+  .japanese-title {
+    font-size: 17px;
+  }
 
-        flex-direction: column;
+  .hero h1 {
+    font-size: 39px;
+  }
 
-        gap: 20px;
+  .films-section {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
 
-        text-align: center;
-    }
+  .films-carousel {
+    gap: 8px;
+  }
 
+  .films-track {
+    gap: 12px;
+  }
 
-    .logo {
+  .film-card {
+    flex-basis: 100%;
+    height: 175px;
+  }
 
-        font-size: 32px;
-    }
+  .carousel-btn {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+    font-size: 25px;
+    line-height: 36px;
+  }
 
+  .music-section {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 20px;
+  }
 
-    .carrossel {
+  .music-list {
+    text-align: center;
+  }
 
-        gap: 10px;
-    }
+  .music-list h2 {
+    text-align: left;
+  }
 
+  .music-item {
+    margin: 0 auto;
+    text-align: center;
+  }
 
-    .filme-principal {
+  .more-music {
+    margin: 5px auto;
+  }
 
-        width: 70%;
-    }
+  .about-section {
+    padding: 20px;
+  }
 
+  .about-section h2 {
+    text-align: center;
+  }
 
-    .seta {
-
-        width: 45px;
-
-        height: 45px;
-    }
-
-
-    .parte-inferior {
-
-        grid-template-columns: 1fr;
-    }
-
-
-    .trilha {
-
-        border-right: none;
-
-        border-bottom: 1px solid #222;
-    }
-
+  .about-section p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
 }
