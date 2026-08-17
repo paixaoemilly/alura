@@ -1,43 +1,345 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
 
-<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio Ghibli</title>
-<style>
-    header{
-       header {
-background-color: #374365;
-color: #f0f4f1;
-text-align: center;
-max-width: 800px;
-margin: 0 auto;
-padding: 16px;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Studio Ghibli</title>
 
-        text-align: center;
-        max-width: 800px;
-        margin: 0;
-        padding: 16px;
-        border: 5px; 
-
-    }
-</style>
+    <!-- Conecta o HTML ao CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-<h1>Studio Ghibli</h1>
-<p>FILMES</p>
-</header>
-<main>
-<div style="display: flex; align-items: flex-end; height: 150px; border: 1px solid #080808;">
-  <p1>style="margin: 0; margin-left: auto; text-align: right;">O Studio Ghibli é um famoso estúdio de animação do Japão. Ele foi criado em 1985 por Hayao Miyazaki, Isao Takahata e Toshio Suzuki. O estúdio é muito amado por suas histórias mágicas, desenhos feitos à mão e personagens inesquecíveis como o Totoro.</p1>
-</div>
 
-</main>
-</style>
-</main>
+<body>
+
+    <!-- ==============================
+         CABEÇALHO
+    =============================== -->
+
+    <header class="cabecalho">
+
+        <h1 class="logo">
+            Studio Ghibli
+        </h1>
+
+        <nav class="menu">
+
+            <button id="idiomaBtn">
+                Idioma
+            </button>
+
+            <button id="informacaoBtn">
+                Informação
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==============================
+         CONTEÚDO PRINCIPAL
+    =============================== -->
+
+    <main>
+
+
+        <!-- ==============================
+             FILMES
+        =============================== -->
+
+        <section class="filmes">
+
+            <h2>FILMES</h2>
+
+
+            <div class="carrossel">
+
+                <!-- SETA ESQUERDA -->
+
+                <button
+                    class="seta"
+                    id="anteriorBtn"
+                    aria-label="Filme anterior">
+
+                    ←
+
+                </button>
+
+
+                <!-- FILME ESQUERDO -->
+
+                <article class="filme filme-lateral">
+
+                    <div class="capa">
+
+                        <img
+                            id="filmeAnteriorImagem"
+                            src=""
+                            alt="Filme anterior">
+
+                    </div>
+
+                    <h3 id="filmeAnteriorNome">
+                        Filme
+                    </h3>
+
+                </article>
+
+
+                <!-- FILME PRINCIPAL -->
+
+                <article class="filme filme-principal">
+
+                    <div class="capa">
+
+                        <img
+                            id="filmeAtualImagem"
+                            src=""
+                            alt="Filme selecionado">
+
+                    </div>
+
+                    <h3 id="filmeAtualNome">
+                        Meu Filme
+                    </h3>
+
+                    <p id="filmeAtualDescricao">
+                        Informações sobre o filme aparecerão aqui.
+                    </p>
+
+                </article>
+
+
+                <!-- PRÓXIMO FILME -->
+
+                <article class="filme filme-lateral">
+
+                    <div class="capa">
+
+                        <img
+                            id="proximoFilmeImagem"
+                            src=""
+                            alt="Próximo filme">
+
+                    </div>
+
+                    <h3 id="proximoFilmeNome">
+                        Filme
+                    </h3>
+
+                </article>
+
+
+                <!-- SETA DIREITA -->
+
+                <button
+                    class="seta"
+                    id="proximoBtn"
+                    aria-label="Próximo filme">
+
+                    →
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             PARTE INFERIOR
+        =============================== -->
+
+        <section class="parte-inferior">
+
+
+            <!-- ==============================
+                 TRILHA SONORA
+            =============================== -->
+
+            <section class="trilha">
+
+                <h2>TRILHA SONORA</h2>
+
+
+                <!-- PLAYER -->
+
+                <div class="player">
+
+
+                    <!-- CAPA -->
+
+                    <div class="album">
+
+                        <img
+                            id="capaMusica"
+                            src=""
+                            alt="Capa da trilha sonora">
+
+                    </div>
+
+
+                    <!-- INFORMAÇÕES -->
+
+                    <div class="musica-info">
+
+                        <h3 id="nomeMusica">
+                            Nome da música
+                        </h3>
+
+                        <p id="nomeFilmeMusica">
+                            Nome do filme
+                        </p>
+
+                    </div>
+
+
+                    <!-- CONTROLES -->
+
+                    <div class="controles">
+
+                        <button
+                            id="playBtn"
+                            aria-label="Reproduzir música">
+
+                            ▶
+
+                        </button>
+
+
+                        <div class="barra">
+
+                            <div
+                                class="progresso"
+                                id="progresso">
+                            </div>
+
+                        </div>
+
+
+                        <span id="tempo">
+                            00:00
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LISTA DE MÚSICAS -->
+
+                <div class="lista-musicas">
+
+                    <button
+                        class="musica"
+                        data-musica="0">
+
+                        01 — Música
+
+                    </button>
+
+
+                    <button
+                        class="musica"
+                        data-musica="1">
+
+                        02 — Música
+
+                    </button>
+
+
+                    <button
+                        class="musica"
+                        data-musica="2">
+
+                        03 — Música
+
+                    </button>
+
+
+                    <button
+                        class="musica"
+                        data-musica="3">
+
+                        04 — Música
+
+                    </button>
+
+
+                    <button
+                        class="musica"
+                        data-musica="4">
+
+                        05 — Música
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==============================
+                 SOBRE
+            =============================== -->
+
+            <section class="sobre">
+
+                <h2>SOBRE</h2>
+
+
+                <p>
+                    O Studio Ghibli é um estúdio japonês de
+                    animação conhecido por suas histórias,
+                    personagens e mundos fantásticos.
+                </p>
+
+
+                <p>
+                    Fundado em 1985, o estúdio produziu
+                    diversos filmes que se tornaram
+                    conhecidos mundialmente.
+                </p>
+
+
+                <p>
+                    Nesta página você poderá conhecer alguns
+                    dos filmes, suas trilhas sonoras e um
+                    pouco mais sobre o Studio Ghibli.
+                </p>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==============================
+         RODAPÉ
+    =============================== -->
+
+    <footer>
+
+        <p>
+            Studio Ghibli
+        </p>
+
+    </footer>
+
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    =============================== -->
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
