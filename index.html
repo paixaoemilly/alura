@@ -40,6 +40,34 @@
         ========================== */
 
         .hero {
+            height: 205px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 70% 40%,
+                    rgba(132, 190, 71, .95),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    120deg,
+                    #164f3c,
+                    #28714a 40%,
+                    #6ca83e 70%,
+                    #9bc84d
+                );
+        }
+
+        /* Folhagens decorativas */
+
+.hero {
     height: 205px;
 
     display: flex;
@@ -50,31 +78,9 @@
     position: relative;
     overflow: hidden;
 
-    background:
-        linear-gradient(
-            rgba(20, 70, 40, 0.12),
-            rgba(80, 140, 50, 0.12)
-        ),
-        url("https://i.pinimg.com/1200x/bc/1c/ef/bc1cef950aed29cb6d0b795c0849dfb0.jpg")
+    background: url("https://i.pinimg.com/1200x/bc/1c/ef/bc1cef950aed29cb6d0b795c0849dfb0.jpg")
         center center / cover no-repeat;
-        }
-
-        /* Folhagens decorativas */
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-
-            background:
-                radial-gradient(circle at 8% 20%, #174f3c 0 12%, transparent 13%),
-                radial-gradient(circle at 22% 0%, #266744 0 15%, transparent 16%),
-                radial-gradient(circle at 42% 15%, #3f8246 0 14%, transparent 15%),
-                radial-gradient(circle at 62% 0%, #5b9b3e 0 18%, transparent 19%),
-                radial-gradient(circle at 85% 5%, #3f7f3d 0 17%, transparent 18%);
-
-            opacity: .9;
-        }
+}
 
         .japanese-title {
             position: relative;
