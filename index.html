@@ -1,115 +1,675 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Studio Ghibli</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Studio Ghibli</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Uncial+Antiqua&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #82b94a;
+            color: white;
+            font-family: "Cormorant Garamond", Georgia, serif;
+        }
+
+
+        /* =========================
+           CABEÇALHO
+        ========================== */
+
+        .hero {
+            height: 205px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 70% 40%,
+                    rgba(132, 190, 71, .95),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    120deg,
+                    #164f3c,
+                    #28714a 40%,
+                    #6ca83e 70%,
+                    #9bc84d
+                );
+        }
+
+        /* Folhagens decorativas */
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(circle at 8% 20%, #174f3c 0 12%, transparent 13%),
+                radial-gradient(circle at 22% 0%, #266744 0 15%, transparent 16%),
+                radial-gradient(circle at 42% 15%, #3f8246 0 14%, transparent 15%),
+                radial-gradient(circle at 62% 0%, #5b9b3e 0 18%, transparent 19%),
+                radial-gradient(circle at 85% 5%, #3f7f3d 0 17%, transparent 18%);
+
+            opacity: .9;
+        }
+
+        .japanese-title {
+            position: relative;
+            z-index: 2;
+
+            font-family: "Noto Serif JP", serif;
+            font-size: 27px;
+            letter-spacing: 8px;
+
+            margin-bottom: -3px;
+
+            text-shadow: 0 2px 4px rgba(0,0,0,.3);
+        }
+
+        .main-title {
+            position: relative;
+            z-index: 2;
+
+            font-family: "Uncial Antiqua", serif;
+
+            font-size: clamp(45px, 5vw, 78px);
+            letter-spacing: 5px;
+
+            color: #fff;
+
+            text-shadow:
+                0 3px 4px rgba(0,0,0,.25);
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           BARRA DOS FILMES
+        ========================== */
+
+        .movies-section {
+            background: #7aacab;
+
+            border-top: 4px solid white;
+            border-bottom: 4px solid white;
+        }
+
+        .movies-title {
+            text-align: center;
+
+            font-size: 34px;
+            font-weight: 600;
+
+            padding: 5px 0 3px;
+
+            color: white;
+        }
+
+        .movies-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            background: #1e2021;
+        }
+
+        .movie-column {
+            list-style: none;
+        }
+
+        .movie-column li {
+            border-bottom: 1px solid rgba(255,255,255,.025);
+        }
+
+        .movie-column li:nth-child(even) {
+            background: #262a2d;
+        }
+
+        .movie-column a {
+            display: block;
+
+            padding: 8px 10px;
+
+            color: #0099d7;
+
+            font-family: Arial, sans-serif;
+            font-size: 17px;
+            font-weight: 500;
+
+            text-decoration: none;
+
+            transition:
+                background .2s ease,
+                color .2s ease,
+                padding-left .2s ease;
+        }
+
+        .movie-column a:hover {
+            background: #33383b;
+            color: #50c8f4;
+            padding-left: 17px;
+        }
+
+        /* Pequena setinha externa */
+
+        .movie-column a::after {
+            content: " ↗";
+            font-size: 14px;
+            opacity: .8;
+        }
+
+
+        /* =========================
+           CONTEÚDO PRINCIPAL
+        ========================== */
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            min-height: 570px;
+
+            background: #82bb49;
+        }
+
+        .content-box {
+            padding: 20px 25px 35px;
+        }
+
+        .content-box:first-child {
+            border-right: 3px solid white;
+        }
+
+        .section-title {
+            font-size: clamp(42px, 4vw, 58px);
+            font-weight: 500;
+
+            margin-bottom: 4px;
+
+            color: white;
+        }
+
+        .text {
+            font-size: 23px;
+            line-height: 1.35;
+
+            text-align: left;
+
+            color: white;
+        }
+
+        .text p {
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           IMAGENS
+        ========================== */
+
+        .image-left {
+            width: 285px;
+            height: 280px;
+
+            object-fit: cover;
+
+            float: right;
+
+            margin: 12px 0 8px 20px;
+
+            border: none;
+        }
+
+        .image-right {
+            width: 300px;
+            height: 280px;
+
+            object-fit: cover;
+
+            float: right;
+
+            margin: 15px 0 10px 20px;
+        }
+
+
+        /* =========================
+           CAIXA AZUL DO GHIBLI
+        ========================== */
+
+        .ghibli-logo {
+            width: 285px;
+            height: 280px;
+
+            float: right;
+
+            margin: 18px 0 10px 20px;
+
+            background: #159bc7;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            color: #172f37;
+
+            font-family: Arial, sans-serif;
+
+            position: relative;
+        }
+
+        .ghibli-logo .totoro {
+            font-size: 90px;
+            line-height: 1;
+
+            margin-bottom: 15px;
+        }
+
+        .ghibli-logo .jp {
+            font-family: "Noto Serif JP", serif;
+
+            font-size: 21px;
+            font-weight: bold;
+
+            margin-bottom: 3px;
+        }
+
+        .ghibli-logo .english {
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           RESPONSIVIDADE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .movies-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .content-box:first-child {
+                border-right: none;
+                border-bottom: 3px solid white;
+            }
+
+            .text {
+                font-size: 20px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .hero {
+                height: 170px;
+            }
+
+            .main-title {
+                font-size: 39px;
+                letter-spacing: 2px;
+            }
+
+            .japanese-title {
+                font-size: 19px;
+                letter-spacing: 4px;
+            }
+
+            .movies-list {
+                grid-template-columns: 1fr;
+            }
+
+            .movies-title {
+                font-size: 30px;
+            }
+
+            .content-box {
+                padding: 15px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+
+            .text {
+                font-size: 19px;
+            }
+
+            .image-left,
+            .image-right,
+            .ghibli-logo {
+                float: none;
+
+                display: block;
+
+                width: 100%;
+                max-width: 350px;
+
+                margin: 20px auto;
+            }
+        }
+
+    </style>
 </head>
+
 <body>
 
-  <header class="hero">
-    <div class="hero-overlay">
-      <div class="japanese-title">スタジオジブリ</div>
-      <h1>STUDIO GHIBLI</h1>
-    </div>
-  </header>
 
-  <main>
-    <!-- FILMES -->
-    <section class="films-section">
-      <h2>Filmes:</h2>
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
 
-      <div class="films-carousel">
-        <button class="carousel-btn prev" aria-label="Filme anterior">←</button>
+    <header class="hero">
 
-        <div class="films-window">
-          <div class="films-track" id="filmsTrack">
-            <article class="film-card">
-              <img src="imagens/filme1.jpg" alt="Princesa Mononoke">
-            </article>
-            <article class="film-card">
-              <img src="imagens/filme2.jpg" alt="O Túmulo dos Vagalumes">
-            </article>
-            <article class="film-card">
-              <img src="imagens/filme3.jpg" alt="O Castelo Animado">
-            </article>
-            <article class="film-card">
-              <img src="imagens/filme4.jpg" alt="O Serviço de Entregas da Kiki">
-            </article>
-            <article class="film-card">
-              <img src="imagens/filme5.jpg" alt="Ponyo">
-            </article>
-          </div>
+        <div class="japanese-title">
+            スタジオジブリ
         </div>
 
-        <button class="carousel-btn next" aria-label="Próximo filme">→</button>
-      </div>
+        <h1 class="main-title">
+            STUDIO GHIBLI
+        </h1>
+
+    </header>
+
+
+    <!-- =========================
+         LISTA DE FILMES
+    ========================== -->
+
+    <section class="movies-section">
+
+        <h2 class="movies-title">
+            Filmes:
+        </h2>
+
+        <div class="movies-list">
+
+            <!-- COLUNA 1 -->
+
+            <ul class="movie-column">
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Nausica%C3%A4_do_Vale_do_Vento"
+                       target="_blank">
+                        Nausicaä do Vale do Vento
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/O_Castelo_no_C%C3%A9u"
+                       target="_blank">
+                        O Castelo no Céu
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Meu_Amigo_Totoro"
+                       target="_blank">
+                        Meu Amigo Totoro
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/T%C3%BAmulo_dos_Vagalumes"
+                       target="_blank">
+                        Túmulo dos Vagalumes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/O_Servi%C3%A7o_de_Entregas_da_Kiki"
+                       target="_blank">
+                        O Serviço de Entregas da Kiki
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- COLUNA 2 -->
+
+            <ul class="movie-column">
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Mem%C3%B3rias_de_Ontem"
+                       target="_blank">
+                        Memórias de Ontem
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Porco_Rosso"
+                       target="_blank">
+                        Porco Rosso: O Último Herói Romântico
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Eu_Posso_Ouvir_o_Oceano"
+                       target="_blank">
+                        Eu Posso Ouvir o Oceano
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Pom_Poko"
+                       target="_blank">
+                        Pom Poko – A Grande Batalha dos Guaxinins
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Sussurros_do_Cora%C3%A7%C3%A3o"
+                       target="_blank">
+                        Sussurros do Coração
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- COLUNA 3 -->
+
+            <ul class="movie-column">
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Princesa_Mononoke"
+                       target="_blank">
+                        Princesa Mononoke
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Meus_Vizinhos,_os_Yamadas"
+                       target="_blank">
+                        Meus Vizinhos, os Yamadas
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/A_Viagem_de_Chihiro"
+                       target="_blank">
+                        A Viagem de Chihiro
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/O_Reino_dos_Gatos"
+                       target="_blank">
+                        O Reino dos Gatos
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/O_Castelo_Animado"
+                       target="_blank">
+                        O Castelo Animado
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- COLUNA 4 -->
+
+            <ul class="movie-column">
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Contos_de_Terramar"
+                       target="_blank">
+                        Contos de Terramar
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Ponyo"
+                       target="_blank">
+                        Ponyo – Uma Amizade que Veio do Mar
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/O_Mundo_dos_Pequeninos"
+                       target="_blank">
+                        O Mundo dos Pequeninos
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Da_Colina_Kokuriko"
+                       target="_blank">
+                        Da Colina Kokuriko
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Vidas_ao_Vento"
+                       target="_blank">
+                        Vidas ao Vento
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
     </section>
 
-    <!-- MÚSICAS + SOBRE -->
-    <section class="bottom-section">
 
-      <div class="music-section">
-        <div class="music-list">
-          <h2>Músicas:</h2>
+    <!-- =========================
+         CONTEÚDO
+    ========================== -->
 
-          <button class="music-item active" data-index="0">Música 1</button>
-          <button class="music-item" data-index="1">Música 2</button>
-          <button class="music-item" data-index="2">Música 3</button>
-          <button class="music-item" data-index="3">Música 4</button>
-          <button class="music-item" data-index="4">Música 5</button>
-          <span class="more-music">...</span>
-        </div>
+    <main class="content">
 
-        <div class="player">
-          <div class="album-art">
-            <img src="imagens/totoro.jpg" alt="Arte do Studio Ghibli">
-          </div>
 
-          <div class="song-name" id="songName">Música nome</div>
+        <!-- CURIOSIDADES -->
 
-          <div class="progress-area">
-            <input
-              type="range"
-              id="progress"
-              min="0"
-              max="100"
-              value="0"
-              aria-label="Progresso da música"
-            >
-          </div>
+        <section class="content-box">
 
-          <div class="player-controls">
-            <button id="repeatBtn" class="control small" aria-label="Repetir">↪</button>
-            <button id="prevSong" class="control" aria-label="Música anterior">|◀</button>
-            <button id="playBtn" class="control play" aria-label="Reproduzir">▶</button>
-            <button id="nextSong" class="control" aria-label="Próxima música">▶|</button>
-            <button id="favoriteBtn" class="control small" aria-label="Favoritar">♡</button>
-          </div>
+            <h2 class="section-title">
+                Curiosidades:
+            </h2>
 
-          <audio id="audio"></audio>
-        </div>
-      </div>
+            <div class="text">
 
-      <div class="about-section">
-        <h2>Sobre:</h2>
-        <p>
-          Fundado em 1985 por Hayao Miyazaki, Isao Takahata e Toshio Suzuki, o Studio
-          Ghibli nasceu com o objetivo de trazer um "sopro de ar novo" à animação mundial.
-          Priorizando a arte tradicional feita à mão (2D), o estúdio japonês consolidou-se
-          através de clássicos como Meu Amigo Totoro — cujo protagonista tornou-se o
-          mascote da empresa —, Princesa Mononoke e o aclamado A Viagem de Chihiro,
-          vencedor do Oscar. Suas obras são globalmente reconhecidas por abordar temas
-          profundos como o pacifismo, o respeito à ecologia e o protagonismo de mulheres
-          fortes, transformando o estúdio em um dos pilares mais influentes e premiados do
-          cinema contemporâneo.
-        </p>
-      </div>
+                <p>
+                    <strong>Sem roteiro prévio:</strong>
+                    Filmes como A Viagem de Chihiro e O Castelo Animado
+                    começaram a ser produzidos sem um roteiro finalizado.
+                    Hayao Miyazaki desenvolve os storyboards à medida que
+                    a animação avança, descobrindo o rumo e o fim da história
+                    no próprio processo.
+                </p>
 
-    </section>
-  </main>
+                <p>
+                    <strong>Rejeição à Inteligência Artificial:</strong>
+                    Miyazaki é um defensor do esforço artístico manual e
+                    declarou abertamente sua oposição ao uso de inteligência
+                    artificial para criar arte artística.
+                </p>
 
-  <script src="script.js"></script>
+                <p>
+                    <strong>Trabalho hercúleo feito à mão:</strong>
+                    Para o filme Vidas ao Vento (2013), Miyazaki desenhou
+                    pessoalmente cerca de 10.000 quadros da animação.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SOBRE -->
+
+        <section class="content-box">
+
+            <h2 class="section-title">
+                Sobre:
+            </h2>
+
+            <div class="text">
+
+                <p>
+                    Fundado em 1985 por Hayao Miyazaki, Isao Takahata e
+                    Toshio Suzuki, o Studio Ghibli nasceu com o objetivo
+                    de trazer um "sopro de ar novo" à animação mundial.
+                    Priorizando a arte tradicional feita à mão (2D),
+                    o estúdio japonês consolidou-se através de clássicos
+                    como Meu Amigo Totoro — cujo protagonista tornou-se
+                    a mascote da empresa —, Princesa Mononoke e o
+                    aclamado A Viagem de Chihiro, vencedor do Oscar.
+                </p>
+
+                <p>
+                    Suas obras são globalmente reconhecidas por abordar
+                    temas profundos como o pacifismo, o respeito à
+                    ecologia e o protagonismo de mulheres fortes,
+                    transformando o estúdio em um dos pilares mais
+                    influentes do cinema contemporâneo.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
 </body>
 </html>
